@@ -3,6 +3,8 @@ module CostFunc
 export costfunction
 
 """
+Function to generate and evaluate the cost function expression
+
 """ function costfunction(activation,target,lossfunc=:crossentropy)
         cost = Expr(:call,lossfunc,activation,target)
         return eval(cost)

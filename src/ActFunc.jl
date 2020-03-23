@@ -40,7 +40,7 @@ end
 
 """ backrelu(dinput::Array{Real},cache::Tuple)
 This provides the derivative of the activation function with regards to the
-activation pulse, i.e., $\frac{\partial g(z)}{\partial z}$
+activation pulse, i.e., \\frac{\\partial g(z)}{\\partial z}
 
 This function handles elementwise operations.
 """ function backrelu(dinput::Array{T},cache::Tuple) where T<:Real
@@ -51,7 +51,7 @@ end
 
 """backsigmoid(dinput::Array{Real},cache::Tuple)
 This provides the derivative of the activation function with regards to the
-activation pulse, i.e., $\frac{\partial g(z)}{\partial z}$
+activation pulse, i.e., \\frac{\\partial g(z)}{\\partial z}
 
 This function handles elementwise operations.
 """ function backsigmoid(dinput::Array{T},cache::Tuple) where T<:Real

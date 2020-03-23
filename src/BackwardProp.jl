@@ -1,6 +1,12 @@
+module BackwardProp
+
+export backprop
 
 
-"""
+""" backprop(target::Array{Real}, backinput::Array{Real,1}, cache::Tuple;
+            layermodel=:relu,outmodel=:sigmoid)
+
+Main function call to perform backwards propagation for calculating derivatives.
 
 """ function backprop(target::Array{T},backinput::Array{T,1},cache::Tuple;
                       layermodel=:relu,
@@ -45,10 +51,11 @@
     backmodel = Symbol(:back,model);
     dgdZ = eval(Expr(:call,backmodel,dinput,cache));
     return dgdZ
+end
 
 """ function backward(dZ::Array{Real},cache::Tuple)
 Calculate the derivative 
-$\frac{\partial J}{\partial W} = \frac{1}{m}\frac{\partial J}{\partial Z} g(Z)^{T}$
+\\frac{\\partial J}{\\partial W} = \\frac{1}{m}\\frac{\\partial J}{\\partial Z} g(Z)^{T}
 
 This is the back propagation step for the functio ForwardProp.forward()
 
@@ -63,3 +70,4 @@ This is the back propagation step for the functio ForwardProp.forward()
     return dinput, dweights, dbias
 end
 
+end
