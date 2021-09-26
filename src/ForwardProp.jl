@@ -4,17 +4,18 @@ export forwardprop
 
 include("ActFunc.jl")
 
+
 """
 
-""" function forwardprop(input::Array{T,1},layerparams::Dict;
+""" function forwardprop(input,layerparams;
                            layermodel=:relu,
-                           outmodel=:sigmoid) where T<: Real
+                           outmodel=:sigmoid)
 
-    
+
     #layeractivate = getactivate(model=layermodel) :: Function;
 
     nlayers = Int(length(layerparams)/2);
-    
+
     layerinput = copy(input);
 
     cache = Array{Tuple,1}(undef,nlayers);
@@ -28,7 +29,7 @@ include("ActFunc.jl")
                                            bias,model=layermodel);
         cache[l] = (backprop,pcache);
         layerinput = pulse;
-   
+
     end
 
     #Output/Terminal layer
@@ -38,16 +39,16 @@ include("ActFunc.jl")
     pulse,pcache,backprop = getactivate(layerinput,weights,
                                         bias,model=outmodel);
     cache[nlayers] = (backprop,pcache)
-    
+
     return pulse,cache
 end
 
 
 """
 
-""" function getactivate(input::Array{T},weights::Array{T,2},
-                         bias::Array{T,2};
-                         model=:sigmoid) where T<: Real
+""" function getactivate(input::Array,weights::Array,
+                         bias::Array;
+                         model=:sigmoid)
 
     Z,backward_cache = forward(input,weights,bias);
     activation,cache = eval(Expr(:call,model,Z));
@@ -68,9 +69,10 @@ end
 Calculate the linear forward propagation eq. Z = w*X + b
 
 we need to store the values for the equation for backpropagation.
-""" function forward(input::Array{T},weights::Array{T,2},
-                     bias::Array{T,2}) where T<: Real
-    Z = weights*input + bias;
+""" function forward(input::Array,weights::Array,
+                     bias::Array)
+    #println(size(weights),size(input),size(bias))
+    Z = weights * input .+ bias;
     cache = (input,weights,bias);
     return Z,cache
 end

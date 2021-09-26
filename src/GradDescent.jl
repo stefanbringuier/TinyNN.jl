@@ -8,8 +8,8 @@ export graddescent
 
 where J is the cost function and w are the parmeters.
 
-""" function graddescent(parameters::Dict,
-                         gradients::Dict;learnrate=0.1e0) where T<: Real
+""" function graddescent!(parameters::Dict,
+                         gradients::Dict;learnrate=0.1e0)
 
     nlayers = Int(length(layerparams)/2);
     for l=0:nlayers-1
@@ -17,7 +17,7 @@ where J is the cost function and w are the parmeters.
         parameters["bias_$(l-1)"] -= learnrate .* gradients["dbias_$(l)"]
     end
 
-    return parameters
+    #return parameters
 end
 
 

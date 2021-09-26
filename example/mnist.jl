@@ -20,6 +20,5 @@ end
 
 train_Y = numbermap(train_Y,noutput);
 
-neuralnetwork = [ ninput 64 64 noutput]'
-parameters, cost = Train.train(neuralnetwork, train_X, train_Y);
-
+neuralnetwork = [ ninput 64 64 noutput]
+parameters, cost = Train.train(neuralnetwork, train_X', train_Y');

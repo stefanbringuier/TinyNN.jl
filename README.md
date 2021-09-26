@@ -1,6 +1,6 @@
-#TinyNN.jl
+# TinyNN.jl
 
-This is a simple Julia code that is setup to optimize a neural network that is fully connected (i.e., dense). The inner layers are all activated using the [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks) fucntion and the output layer is activated using the [Sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function) function. Therefore this type of network is good for classification type problems that are simple, for example, the MNIST database (see example).
+This is a simple Julia code that is setup to optimize a neural network that is fully connected (i.e., dense). The inner layers are all activated using the [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks) function and the output layer is activated using the [Sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function) function. Therefore this type of network is good for classification type problems that are simple, for example, the MNIST database (see example).
 
 The code is very similar to that posted by [Xabier G. Andrade](https://medium.com/datadriveninvestor/how-to-build-a-deep-neural-network-from-scratch-with-julia-862116a194c) given thats where I got the idea to learn about Neural Networks by doing it myself.
 

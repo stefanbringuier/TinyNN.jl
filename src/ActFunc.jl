@@ -8,8 +8,8 @@ Returns the sigmoid function value of z.
     return σ,Z_cache
 end
 
-function sigmoid(Z⃗::Array{T}) where T<: Real
-    σ = 1.00e0 ./ ( 1.00e0 .+ exp.(-Z⃗) );
+function sigmoid(Z⃗)
+    σ = 1.00e0 ./ ( 1.00e0 .+ exp.(.-Z⃗[1]) );
     Z⃗_cache = copy(Z⃗)
     return σ,Z⃗_cache
 end
@@ -54,13 +54,7 @@ This provides the derivative of the activation function with regards to the
 activation pulse, i.e., \\frac{\\partial g(z)}{\\partial z}
 
 This function handles elementwise operations.
-""" function backsigmoid(dinput::Array{T},cache::Tuple) where T<:Real
-    dgdZ = dinput .* (sigmoid(cache) .* (1.00e0 .- sigmoid(cache)));
+""" function backsigmoid(dinput,cache) where T<:Real
+    dgdZ = dinput .* (sigmoid(cache)[1] .* (1.00e0 .- sigmoid(cache)[1]));
     return dgdZ
 end
-
-
-
-
-
-   
